@@ -1,0 +1,17 @@
+.blue-button{
+    background-color: blue;
+    color: white;
+    border: 1px solid gray;
+}
+
+.green-button{
+    background-color: green;
+    color: white;
+    border: 1px solid gray;
+}
+
+.red-button{
+    background-color: red;
+    color: white;
+    border: 1px solid gray;
+}

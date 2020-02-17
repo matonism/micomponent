@@ -1,0 +1,30 @@
+<html>
+    <div onclick="handleClick()" class="event-sender">
+        click here
+    </div>
+    <div oncustomevent="handleCustomEvent()">
+
+    </div>
+    <script>
+        // document.addEventListener('customEvent', function(){
+        //     console.log('handled event');
+        // });
+
+        function handleCustomEvent(){
+            var i = 0;
+            console.log('handled');
+        }
+
+        function handleClick(){
+            let event = new CustomEvent('customEvent', {
+                bubbles: true,
+                cancelable: false,
+                detail: {
+                    message: 'dogs'
+                }
+            });
+            document.querySelector('.event-sender').dispatchEvent(event);
+        }
+    </script>
+
+</html>

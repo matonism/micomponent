@@ -1,8 +1,12 @@
-import WebComponentLoader from '../WebComponentLoader/WebComponentLoader.js';
+import WebComponentLoader from './WebComponentLoader/WebComponentLoader.js';
 
 class MiCoolComponent extends HTMLElement {
 
 	//******************* BEGIN SETUP ******************
+	static get observedAttributes(){
+		return [];
+	}
+	
 	constructor() {
 		super();
 	}
@@ -20,43 +24,49 @@ class MiCoolComponent extends HTMLElement {
 	//super.attributeChangedCallback(name, oldValue, newValue);
 	attributeChangedCallback(name, oldValue, newValue){
 		if(!!this.constructor.observedAttributes && !!this.baseMarkup){
-			
-			let newMarkup = this.baseMarkup;
-
-			this.constructor.observedAttributes.forEach((attribute, index) => {
-				let regex = new RegExp('{!' + attribute + '}', "g");
-				newMarkup = newMarkup.replace(regex, newValue);
-			});
-	        
-	        this.clearMarkup();
-
-			let markup = this.createElementsFromHTML(newMarkup);
-			this.shadowRoot.appendChild(markup.content.cloneNode(true));
-			this.renderedCallback();
+			this.setMergeFieldOnAllNodes(this.baseMarkup.childNodes, this.shadowRoot.childNodes, name, newValue);
 		}
-		
-
 	}
 
-	renderedCallback(component){
-		
+	renderedCallback(){
+
 	}
 
 	/************** Private methods ******************/
 
-	clearMarkup(){
-		let first = this.shadowRoot.firstElementChild; 
+	setMergeFieldOnAllNodes(baseNodeTree, trueNodeTree, mergeField, newValue){
+		let mergeFieldSyntax = '{!' + mergeField + '}';
 
-        while (!!first) { 
-            first.remove(); 
-            first = this.shadowRoot.firstElementChild; 
-        } 
+		baseNodeTree.forEach((baseNode, index) => {
+
+			let trueNode = trueNodeTree[index];
+			
+			let regex = new RegExp(mergeFieldSyntax, "g");
+			let attributeValue = (!!newValue) ? newValue : '';
+
+			if(baseNode.nodeName == '#text'){
+				if(baseNode.nodeValue.includes(mergeFieldSyntax)){
+					trueNode.nodeValue = baseNode.nodeValue.replace(regex, attributeValue);
+				}
+			}else{
+				for(let i = 0; i < baseNode.attributes.length; i++){
+					let attribute = baseNode.attributes[i];
+					if(attribute.value.includes(mergeFieldSyntax)){
+						trueNode.attributes[i].value = attribute.value.replace(regex, attributeValue);
+					}
+				}
+			}
+			if(!!baseNode.childNodes && baseNode.childNodes.length > 0){
+				this.setMergeFieldOnAllNodes(baseNode.childNodes, trueNode.childNodes, mergeField, newValue);
+			}
+
+		});
 	}
+
 	createElementsFromHTML(htmlString) {
 		var markup = new DOMParser().parseFromString(htmlString, "text/html");
 		return markup.querySelector('template');
 	}
-
 
 	getComponentFileName(){
 		let tagName = this.localName;
@@ -74,14 +84,6 @@ class MiCoolComponent extends HTMLElement {
 
 		return fileName.replace(/-/gi, '');
 	}
-
-	static get template() {
-		var root = this;
-		while (root.parentNode) {
-			root = root.parentNode;
-		}
-		return root;
-    }
 }
 
 export default MiCoolComponent;

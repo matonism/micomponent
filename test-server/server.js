@@ -12,9 +12,9 @@ var bodyParser = require('body-parser');
 var app = express();
 app.use( bodyParser.json() );
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
-app.use(express.static(__dirname + '/../webcomponents'))
+app.use(express.static(__dirname + '/../public'))
 .use(cors());
-console.log(__dirname + '/../webcomponents');
+console.log(__dirname + '/../public');
 // .use(cookieParser())
 // .use(fileUpload({
 // 	//cuts off file if its larger than specified number but does not throw error

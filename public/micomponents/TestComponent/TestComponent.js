@@ -1,4 +1,4 @@
-import MiCoolComponent from '../MiCoolComponent.js';
+import MiCoolComponent from '../../micomponent-framework/MiCoolComponent.js';
 
 class TestComponent extends MiCoolComponent {
 
@@ -25,7 +25,7 @@ class TestComponent extends MiCoolComponent {
 
 	renderedCallback(){
 		let element = this.shadowRoot.querySelector('div');
-		element.innerHTML = this.getAttribute('display-text');
+		//element.innerHTML = this.getAttribute('display-text');
 		element.onclick = this.addExclamation;
 	}
 
