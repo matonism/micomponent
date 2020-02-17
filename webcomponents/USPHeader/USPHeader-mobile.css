@@ -1,0 +1,48 @@
+.title-bar{
+	display: flex;
+	align-content: space-between;
+    background-color: rgba(0, 0, 0, 1); /* black */ 
+    height: 15vh;
+    z-index: 1;
+    width: 100%;
+    position: fixed;
+    top:0;
+}
+
+.hamburger-nav{
+	display: flex;
+	flex-flow: column;
+	justify-content: space-around;
+	color: white;
+	font-size: 3rem;
+	font-family: 'Champagne_Limousines', Verdana, Tahoma;
+	text-shadow: 1px 1px 10px black;
+	flex-grow: 1;
+	width: 3rem;
+}
+.banner-title-text{
+	display: flex;
+	flex-flow: column;
+	justify-content: space-around;
+	flex-grow: 6;
+	font-size: 3rem;
+	font-family: 'LemonMilk', Verdana, Tahoma; 
+	color: white;
+	text-shadow: 1px 1px 10px black;
+	text-align: center;
+}
+
+.header-even-spacer {
+	width: 3.5rem;
+	flex-grow: 1;
+}
+
+.header-space {
+	height: 15vh;
+}
+
+
+.orange-text{
+	color: rgba(218, 87, 16, 1); /* burnt orange */ 
+	display: contents;
+}

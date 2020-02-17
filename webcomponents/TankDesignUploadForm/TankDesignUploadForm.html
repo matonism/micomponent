@@ -1,0 +1,22 @@
+<template>
+	<form method="POST" id="tankDesignEntryForm" enctype="multipart/form-data" action="https://ultimate-summer-party.herokuapp.com/Tank/Design/Entry">
+		<usp-input-field label="Designer Name" name="designer-name" type="text"></usp-input-field>
+		<usp-input-field label="Design Name" name="design-name" type="text"></usp-input-field>
+		<usp-input-field label="Email" name="email" type="text"></usp-input-field>
+		<usp-input-field id="file-input" name="tankDesignEntry" type="file" accept=".jpg, .png, .gif, .jpeg"></usp-input-field>
+
+
+		<div class="image-preview">
+			<img id="uploadPreview" class="upload-preview" src=""/>
+		</div>
+
+		<usp-input-field id="submit-button" type="button" class="orange-button" value="Submit Tank Design"></usp-input-field>
+	</form>
+
+	<div class="page-shadow hidden">	
+		<div class="status-modal hidden">
+			Loading...
+		</div>
+	</div>
+
+</template>

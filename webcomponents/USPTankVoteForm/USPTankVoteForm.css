@@ -1,0 +1,196 @@
+  @font-face {
+      font-family: "Coolvetica";
+      src: url(../fonts/coolvetica.ttf) format("truetype");
+  }
+  @font-face {
+      font-family: "LemonMilk";
+      src: url(../fonts/LemonMilk.otf) format("truetype");
+  }
+  @font-face {
+      font-family: "ChampagneLimousines";
+      src: url(../fonts/Champagne_Limousines.ttf) format("truetype");
+  }
+
+  .input-container {
+    font-family: 'Champagne_Limousines', Verdana, Tahoma;
+  }
+
+  .input-fields {
+    display: flex;
+    flex-flow: column;
+  }
+
+
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row;
+    justify-content: space-around;
+    margin: 1rem 1rem 0rem;
+  }
+
+  .generic-button{
+    margin-top: 1rem;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  }
+
+  .generic-button:hover {
+    background-color: gray;
+    color: white;
+  }
+
+  .upload-preview {
+    max-height: 400px;
+    max-width: 80vw;
+  }
+
+  .error-input {
+    border: 0.2rem solid red !important;
+  }
+
+  .image-preview {
+    display: flex;
+    justify-content: space-around;
+  }
+
+@media screen and (max-width: 800px) {
+  .page-shadow {
+    height: 100vh;
+    width: 100vw;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: rgba(0,0,0,0.2);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .status-modal {
+    padding:1.5rem;
+    background-color: white;
+    border-radius: 1rem;
+    max-width: 90vw;
+    max-height: 50vw;
+    text-align: center;
+    min-height: 20vh;
+    min-width: 90vw;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    font-family: 'Champagne_Limousines', Verdana, Tahoma;
+    font-size: 1rem;
+  }
+
+
+  .orange-button{
+
+    color: white;
+    font-family: "LemonMilk", Verdana, Tahoma;
+    background-color: rgba(218, 87, 16, 1); /* burnt orange */
+    height: auto;
+    margin-top: 1rem;
+    padding: 6px 12px;
+    font-size: 3rem;
+    line-height: 1.42857143;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  }
+
+  .generic-button{
+    height: auto;
+    margin-top: 1rem;
+    padding: 6px 12px;
+    font-size: 1rem;
+    line-height: 1.42857143;
+    color: #ccc;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .page-shadow {
+    height: 100vh;
+    width: 100vw;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: rgba(0,0,0,0.2);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .orange-button{
+
+    color: white;
+    font-family: "LemonMilk", Verdana, Tahoma;
+    background-color: rgba(218, 87, 16, 1); /* burnt orange */
+    height: auto;
+    margin-top: 1rem;
+    padding: 6px 12px;
+    font-size: 3rem;
+    line-height: 1.42857143;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  }
+
+  .status-modal {
+    padding:1.5rem;
+    background-color: white;
+    border-radius: 1rem;
+    max-width: 40vw;
+    max-height: 60vh;
+    text-align: center;
+    min-height: 100px;
+    min-width: 200px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    font-family: 'Champagne_Limousines', Verdana, Tahoma;
+    font-size: 16px;
+  }
+}
+
+  .hidden{
+    visibility: hidden;
+  }
