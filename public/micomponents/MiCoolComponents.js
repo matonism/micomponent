@@ -9,3 +9,6 @@ customElements.define('button-component', ButtonComponent);
 
 import USPHeader2 from './USPHeader2/USPHeader2.js';
 customElements.define('u-s-p-header2', USPHeader2);
+
+import CustomInput from './CustomInput/CustomInput.js';
+customElements.define('custom-input', CustomInput);
