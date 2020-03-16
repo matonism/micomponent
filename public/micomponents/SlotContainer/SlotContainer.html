@@ -1,0 +1,16 @@
+<template>
+    Slot Container here.  This part doesn't need a slot
+    <br/>
+    <slot-component slot-description="This is all you need to know about slots">
+        <div slot="header">
+            SlotContainer: SLOT HEADER
+            <br/>
+        </div>
+        <div slot="component-content">
+            <br/>
+            SlotContainer: I would rather display this
+            <br/>
+            <custom-input label="slot input" name="slotinput"></custom-input>
+        </div>
+    </slot-component>
+</template>

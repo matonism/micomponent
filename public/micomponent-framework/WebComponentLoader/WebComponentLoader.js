@@ -22,14 +22,14 @@ function WebComponentLoader(component, directoryName, loadComponentsAtInit){
 	this.importCSSFile = function(directoryName){
 		
 		var cssFile = document.createElement("link");
-		cssFile.href = "../../micomponents/" + directoryName + ".css";
+		cssFile.href = "/micomponents/" + directoryName + ".css";
 		cssFile.rel = "stylesheet";
 		this.component.rootNode.appendChild(cssFile);
 	}
 
 	this.importHTMLTemplate = function(directoryName){
 
-		return fetch("../../micomponents/" + directoryName + ".html").then(response => response.text()).then(text => {
+		return fetch("/micomponents/" + directoryName + ".html").then(response => response.text()).then(text => {
 			let markup = this.createElementsFromHTML(text);
 			this.component.rootNode.appendChild(markup.content.cloneNode(true));
 			this.setMergeFieldsOnInit();

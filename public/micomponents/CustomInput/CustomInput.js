@@ -1,9 +1,10 @@
-import MiCoolComponent from "../../micomponent-framework/MiCoolComponent";
-
+import MiCoolComponent from "../../micomponent-framework/MiCoolComponent.js";
+//attributes
+//type, class, accept, value, label, name
 class CustomInput extends MiCoolComponent {
 
     static get observedAttributes(){
-        return ['label', 'name'];
+        return ['label', 'name', 'file-input-label'];
     }
     
     constructor(){
@@ -22,26 +23,26 @@ class CustomInput extends MiCoolComponent {
         var inputLabel = this.shadowRoot.querySelector('#input-label');
         var inputField = this.shadowRoot.querySelector('#input-field');
         inputField.addEventListener('keyup', this.handleKeyUp);
-        inputField.addEventListener('onblur', this.handleBlur);
+        inputField.addEventListener('blur', this.handleBlur);
         inputField.type = this.getAttribute('type');
 
         if(inputField.type == 'file'){
-            //inputLabel.remove();
+            inputLabel.classList.add('hide');
 
             inputField.parentElement.classList.add('input-file-mask');
-
-            // var text = document.createTextNode("Choose a file to Upload");
-            // inputField.parentElement.appendChild(text);
+            let fileInputLabel = this.shadowRoot.querySelector('.file-input-label');
+            fileInputLabel.classList.remove('hide');
+            inputField.parentElement.classList.add('input-file-mask');
 
         }
 
         if(inputField.type == 'button'){
-            inputLabel.display = 'none';
+            inputLabel.classList.add('hide');
         }
 
-        if(!!this.id){
-            inputField.id = this.id;
-        }
+        // if(!!this.id){
+        //     inputField.id = this.id;
+        // }
         if(!!this.onchange){
             inputField.onchange = this.onchange;
         }
@@ -58,25 +59,24 @@ class CustomInput extends MiCoolComponent {
             inputField.value = this.getAttribute('value');
         }
 
-        this.rootNode.insertBefore(templateClone, this);
-        this.remove();
-
     }
 
     handleKeyUp(event){
-        let component = event.currentTarget.getRootNode().host();
+        let component = event.currentTarget.getRootNode().host;
         let inputChangedEvent = new CustomEvent('custominputkeyup', {
             bubbles: true,
             detail: {
                 inputField: event.currentTarget.name,
                 value: event.currentTarget.value
             }
-        })
+        });
+        component.setAttribute('value', event.currentTarget.value);
         component.dispatchEvent(inputChangedEvent);
+        
     }
 
     handleBlur(event){
-        let component = event.currentTarget.getRootNode().host();
+        let component = event.currentTarget.getRootNode().host;
         let inputChangedEvent = new CustomEvent('custominputblur', {
             bubbles: true,
             detail: {
@@ -88,3 +88,5 @@ class CustomInput extends MiCoolComponent {
     }
         
 }
+
+export default CustomInput;
